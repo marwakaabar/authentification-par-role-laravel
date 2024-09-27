@@ -10,44 +10,44 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-
+use App\Models\Role;
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     *
-     * @return \Illuminate\View\View
-     */
+
     public function create()
     {
-        return view('Front.pages.auth.register');
+        $roles = Role::all();
+        return view('Front.pages.auth.register', compact('roles'));
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required', 'exists:role,id'], // Valider le rôle sélectionné
+'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
         ]);
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('profile_images', 'public'); // Save image to storage
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => $request->role, // Enregistrer le rôle
+            'image' => $imagePath, // Store the image path
+
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+        
 
         return redirect(RouteServiceProvider::HOME);
     }

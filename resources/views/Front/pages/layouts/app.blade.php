@@ -1,67 +1,54 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en">
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="logincss/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="logincss/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="logincss/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="logincss/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="logincss/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="logincss/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="logincss/css/util.css">
+	<link rel="stylesheet" type="text/css" href="logincss/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body class="font-sans antialiased">
+    <div class="min-h-screen flex flex-col">
+      
 
-        <title>@yield('title')</title>
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/css/selectize.min.css" integrity="sha512-zSutnLmqtlWVx0A5NdW8YwshpUETPzJ6YBAvb+bkE0QbVKopS0ACPjE6QY6F9aFPSowfiho+hgeQh095FRPj5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-        <script
-            src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
-            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
-            crossorigin="anonymous">
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/js/standalone/selectize.min.js" integrity="sha512-JFjt3Gb92wFay5Pu6b0UCH9JIOkOGEfjIi7yykNWUwj55DBBp79VIJ9EPUzNimZ6FvX41jlTHpWFUQjog8P/sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-        <style>
-            .selectize-input {
-                border-radius: 0.375rem;
-                border: 1px solid rgb(209 213 219);
-                appearance: none;
-                background-color: #fff;
-                padding-top: 0.5rem;
-                padding-right: 0.75rem;
-                padding-bottom: 0.5rem;
-                padding-left: 0.75rem;
-                line-height: 1.5rem;
-            }
-            .selectize-input > input{
-                width: 300px !important;
-            }
-            .selectize-input input::placeholder {
-                color: rgb(209 213 219);
-                font-size: 1rem;
-            }
-        </style>
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen flex flex-col">
-            @include('Front.pages.layouts.navigation')
-
-            <main class="flex-1 mt-8">
-                <x-container>
-                    @yield('main')
-                </x-container>
-            </main>
-
-            <footer class="bg-slate-200 mt-14 py-6">
-                <x-container>
-                    <div class="flex items-center justify-between">
-                        <div>&copy; HiveDev {{date('Y')}}</div>
-                        <a class="underline" href="https://github.com/MichaelFarquhar/laravel-qna-forum" target="_blank">Source Code</a>
-                    </div>
-                </x-container>
-            </footer>
+        <div class="limiter">
+		<div class="container-login100">
+                @yield('main')
+            </div>
         </div>
-    </body>
+    </div>
+
+	
+<!--===============================================================================================-->	
+<script src="logincss/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="logincss/vendor/bootstrap/js/popper.js"></script>
+	<script src="logincss/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="logincss/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="logincss/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="logincss/js/main.js"></script>
+
+</body>
 </html>

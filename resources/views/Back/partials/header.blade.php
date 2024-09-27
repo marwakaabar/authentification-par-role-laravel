@@ -301,17 +301,14 @@
                     href="#"
                     aria-expanded="false"
                   >
-                    <div class="avatar-sm">
-                      <img
-                        src="img/profile.jpg"
-                        alt="..."
-                        class="avatar-img rounded-circle"
-                      />
-                    </div>
+                  <div class="profile-image">
+        <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('default-profile.png') }}" 
+             alt="Profile Image" class="rounded-full h-12 w-12 object-cover">
+    </div>
                     <span class="profile-username">
                       <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
-                    </span>
+                      {{ auth()->user()->name ? auth()->user()->name : ''  }}
+                      </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
                     <div class="dropdown-user-scroll scrollbar-outer">

@@ -49,10 +49,10 @@
 
 
 
-                <li class="nav-item {{ request()->routeIs('test3') ? 'active' : '' }}">
-                    <a href="#">
+                <li class="nav-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
+                    <a href="{{ route('users.index') }}">
                         <i class="fas fa-file-alt"></i>
-                        <p>gestion</p>
+                        <p>gestion des users</p>
                     </a>
                 </li>
 
@@ -78,6 +78,20 @@
                     </a>
                 </li>
             </ul>
+
+            <!-- Logout Form -->
+            <div class="mt-4">
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <a href="{{ route('logout') }}"
+           onclick="event.preventDefault(); this.closest('form').submit();"
+           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            {{ __('Log Out') }}
+        </a>
+    </form>
+</div>
+
+            <!-- End Logout Form -->
         </div>
     </div>
 </div>
